@@ -1,0 +1,35 @@
+.magic{
+    border: none;
+    min-width: 80%;
+    min-height: 100rem;
+    resize: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+textarea{
+    margin-top: 8rem;
+    border: none;
+    min-width: 80%;
+    min-height: 1rem;
+    resize: none;
+    outline-offset: 0px;
+    cursor: text;
+    outline: none;
+
+}
+textarea:focus {
+    outline-offset: 0px;
+    border: none;
+}
+
+h1, h2{
+    text-align: center;
+}
+h1{
+    margin-bottom: 0.5rem;
+}
