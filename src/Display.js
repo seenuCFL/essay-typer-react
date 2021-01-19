@@ -10,7 +10,7 @@ class Display extends Component{
                     <h2>Small article on {this.props.searchKey}</h2>
                 </div>
                 <div className="magic">
-                    <textarea id="ta" autoFocus readOnly onKeyPress={this.props.printText} value={this.props.data}></textarea>
+                    <textarea id="ta" autoFocus readOnly onKeyPress={this.props.printText} value={this.props.data} placeholder="start typing..."></textarea>
                 </div>
             </React.Fragment>
         );
