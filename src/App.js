@@ -21,16 +21,28 @@ class App extends Component{
     this.state = {
       searchKey: '',
       currentPosition: 0,
-      word: ''
+      word: '',
+      input: false
     }
   }
 
   setInput = (event) => {
-    this.setState({searchKey:event.target.value});
+    this.setState(Object.assign(this.state, {searchKey:event.target.value}));
   }
 
-  wikiSearch = () => {    
-    this.setState({currentPosition:0})
+
+  wikiSearch = () => {   
+    
+    this.setState({currentPosition:0});
+    if(this.state.searchKey.length){
+      this.setState(Object.assign(this.state, {input:true}));
+    }
+    const a = this.state.searchKey.split(' ');
+    for(let i=0;i<a.length;i++){
+      a[i] = a[i].charAt(0).toUpperCase() + a[i].slice(1);
+    }
+    let essay = a.join(' ');
+    this.setState(Object.assign(this.state, {searchKey:essay}));
   }
 
   printText = () => {
@@ -39,18 +51,26 @@ class App extends Component{
     for(let i=this.state.currentPosition; i<ran+this.state.currentPosition ;i++){
       x+=text[i];
     }
-    this.setState(Object.assign(this.state, {currentPosition: this.state.currentPosition+ran}))
-    this.setState(Object.assign(this.state, {word:this.state.word + x}))
+    this.setState(Object.assign(this.state, {currentPosition: this.state.currentPosition+ran}));
+    this.setState(Object.assign(this.state, {word:this.state.word + x}));
   }
 
   render(){
-    return(
-      <React.Fragment>
-        {/* <h1>Essay-Typer</h1>
-        <Search setInput={this.setInput} wikiSearch={this.wikiSearch}/><br></br> */}
-        <Display data={this.state.word} printText={this.printText} />
-      </React.Fragment>
-    );
+      if(!(this.state.input)){
+        return(
+          <React.Fragment>
+            <Search setInput={this.setInput} wikiSearch={this.wikiSearch}/>
+          </React.Fragment>
+        );
+      }
+      else{
+        return(
+        <React.Fragment>
+          <Display searchKey={this.state.searchKey} data={this.state.word} printText={this.printText} />
+        </React.Fragment>
+        );
+        
+      }
   }
 }
 

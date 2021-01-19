@@ -6,8 +6,8 @@ class Display extends Component{
         return(
             <React.Fragment>
                 <div className="heading">
-                    <h1>Panda</h1>
-                    <h2>Small article on panda</h2>
+                    <h1>{this.props.searchKey}</h1>
+                    <h2>Small article on {this.props.searchKey}</h2>
                 </div>
                 <div className="magic">
                     <textarea id="ta" autoFocus readOnly onKeyPress={this.props.printText} value={this.props.data}></textarea>
